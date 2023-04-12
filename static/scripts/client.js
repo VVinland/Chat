@@ -29,14 +29,16 @@ socket.on('chat message', function (data) {
     const itemMinutes = new Date().getMinutes();
 
     message.insertAdjacentHTML(
-        'afterbegin',
+        'beforeend',
         `<div class='mess'>
         <div class='sizeNameAndDate'>${data.name} <label>${itemHours}:${itemMinutes}</label>
         </div>
         <li>${data.body}</li>
         </div>`
     )
-    window.scrollTo(0, document.body.scrollHeight);
+    setTimeout(function(){
+        message.scrollTop = message.scrollHeight;
+    },0)
 })
 
 
